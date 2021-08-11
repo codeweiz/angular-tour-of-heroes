@@ -1,0 +1,22 @@
+<h2>My Heroes</h2>
+<div>
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #heroName />
+  <button class="add-button" (click)="add(heroName.value); heroName.value=''">
+    Add hero
+  </button>
+</div>
+<ul class="heroes">
+  <!-- *ngFor 相当于 vue 中的 v-for -->
+  <!-- (click) 相当于 vue 中的 @click -->
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span>{{hero.name}}
+    </a>
+    <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+  </li>
+</ul>
+
+<!--父组件使用 [a]="b" 向子组件传值，a 为子组件的参数名，b 为父组件的参数名-->
+<!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
+
